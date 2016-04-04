@@ -3,7 +3,8 @@
 var assert = require('assert');
 var fs = require('fs');
 
-var json = require('../json.js');
+var common = require('../common');
+var json = require('../../tools/doc/json.js');
 
 // Outputs valid json with the expected fields when given simple markdown
 function test_doJSON() {

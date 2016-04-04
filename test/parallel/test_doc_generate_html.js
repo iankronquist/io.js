@@ -3,7 +3,8 @@
 var assert = require('assert');
 var fs = require('fs');
 
-var html = require('../html.js');
+require('../common');
+var html = require('../../tools/doc/html.js');
 
 // Outputs valid html when given simple markdown
 function test_toHTML() {
