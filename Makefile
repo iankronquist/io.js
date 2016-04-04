@@ -115,6 +115,7 @@ test: | cctest  # Depends on 'all'.
 	$(PYTHON) tools/test.py --mode=release message parallel sequential -J
 	$(MAKE) jslint
 	$(MAKE) cpplint
+	$(MAKE) test-doc
 
 test-parallel: all
 	$(PYTHON) tools/test.py --mode=release parallel -J
@@ -252,6 +253,10 @@ apidoc_dirs = out/doc out/doc/api/ out/doc/api/assets
 apiassets = $(subst api_assets,api/assets,$(addprefix out/,$(wildcard doc/api_assets/*)))
 
 doc: $(apidoc_dirs) $(apiassets) $(apidocs) tools/doc/ $(NODE_EXE)
+
+test-doc:
+	$(NODE) ./tools/doc/tests/test_html.js
+	$(NODE) ./tools/doc/tests/test_json.js
 
 $(apidoc_dirs):
 	mkdir -p $@
